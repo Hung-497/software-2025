@@ -1,13 +1,11 @@
-def filter_even_numbers(integers):
-    evens = []
-    for i in range(0, len(integers)):
-        number = integers[i]
-        if number % 2 == 0:
-            evens.append(number)
-        #print(evens)
-    return evens
+import random
+def roll_dice(num):
+    dice = random.randint(1,num)
+    while dice != num:
+        print(dice)
+        dice = random.randint(1, num)
+    print(dice)
+    return
 
-numbers = [1,2,3,4,5,6,7,8,9]
-evenNumbers = filter_even_numbers(numbers)
-print(numbers)
-print(evenNumbers)
+num = input("The number of sides: ")
+roll_dice(int(num))

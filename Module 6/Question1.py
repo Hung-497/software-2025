@@ -1,6 +1,11 @@
-def sum_of_list(integers):
-    sumOfNumbers = sum(numbers)
-    return sumOfNumbers
-numbers = [1,2,3]
-sum = sum_of_list(numbers)
-print(f'Sum of the numbers was: {sum}')
+import random
+def roll_dice():
+    n = 0
+    dice = random.randint(1,6)
+    while dice != 6:
+        print(dice)
+        n += 1
+        dice = random.randint(1, 6)
+    print(dice)
+    return
+roll_dice()
