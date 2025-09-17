@@ -9,7 +9,7 @@ def get_airports_by_country(country_code):
         user='root',
         password='Giahung@!497',
         autocommit=True)
-    sql = f"select type, count(*) as airport_count from airport where iso_country = '{country_code}' group by type order by airport_count desc;"
+    sql = f"select type, count(*) as airport_count from airport where iso_country = '{country_code}' and type != 'closed' group by type order by airport_count desc;"
     cursor = connection.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
