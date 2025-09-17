@@ -7,13 +7,13 @@ def flight_game(code):
         user='root',
         password='Giahung@!497',
         autocommit=True)
-    sql = "select name, municipality from airport where ident = %s;"
-    cursor = connection.cursor(dictionary=True)
-    cursor.execute(sql, (code,))
+    sql = f"select name, municipality from airport where ident ='{code}' "
+    cursor = connection.cursor()
+    cursor.execute(sql)
     row = cursor.fetchone()
     if row:
-        print(f"Airport name: {row['name']}")
-        print(f"Location: {row['municipality']}")
+        print(f"Airport name: {row[0]}")
+        print(f"Location: {row[1]}")
     else:
         print(f"No airport found with ICAO code {code}")
     cursor.close()
