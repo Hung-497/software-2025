@@ -12,10 +12,6 @@ class Elevator:
             self.current_floor -= 1
             print(f"Current floor: {self.current_floor}")
     def go_to_floor(self, target: int):
-        if target < self.bottom_floor:
-            target = self.bottom_floor
-        elif target > self.top_floor:
-            target = self.top_floor
         while self.current_floor < target:
             self.floor_up()
         while self.current_floor > target:
