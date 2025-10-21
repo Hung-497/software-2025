@@ -33,25 +33,3 @@ class Race:
             print(f"{car.license_plate:6}|{car.maximum_speed:17}|{car.current_speed:21}|{car.travelled_distance:12.1f}")
     def race_finished(self):
         return any(car.travelled_distance >= self.distance for car in self.cars)
-
-cars = []
-for i in range(1, 11):
-    license_plate = f"ABC-{i}"
-    maximum_speed = random.randint(100, 200)
-    car = Car(license_plate, maximum_speed)
-    cars.append(car)
-
-race = Race("Grand Demolition Derby", 8000, cars)
-
-hours = 0
-while not race.race_finished():
-    race.hour_passes()
-    hours += 1
-
-    if hours % 10 == 0:
-        print(f"\nStatus after {hours} hours:")
-        race.print_status()
-
-print(f"\nRace finished after {hours} hours!")
-print("Final results:")
-race.print_status()
