@@ -6,7 +6,11 @@ def flight_game(code):
         database='flight_game',
         user='root',
         password='Giahung@!497',
-        autocommit=True)
+        autocommit=True,
+        auth_plugin="mysql_native_password",
+        use_pure=True
+    )
+
     sql = f"select name, municipality from airport where ident ='{code}' "
     cursor = connection.cursor()
     cursor.execute(sql)
