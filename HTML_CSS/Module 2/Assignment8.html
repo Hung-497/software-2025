@@ -5,6 +5,22 @@
     <title>Assignment 8</title>
 </head>
 <body>
-
+<h1>String concatenating</h1>
+<p id="target"></p>
+<script>
+  function concat(arr, separator = '') {
+    let result = '';
+    for (let i = 0; i < arr.length; i++) {
+      if (i > 0) {
+        result += separator;
+      }
+      result += arr[i];
+    }
+    return result;
+  }
+  const name = ['Cat', 'is', 'something', 'like', 'that'];
+  const hi = concat(name, '');
+  document.getElementById('target').innerHTML = hi;
+</script>
 </body>
 </html>
