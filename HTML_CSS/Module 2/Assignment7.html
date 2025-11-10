@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 7</title>
+</head>
+<body>
+<h1> Number on the dice 🎲</h1>
+<div id="target"></div>
+<script>
+  'use strict';
+
+  function roll_dice(num) {
+    return Math.floor(Math.random() * num) + 1;
+  }
+
+  const number = parseInt(prompt('Maximum number on the dice'));
+  const list = [];
+  while (true) {
+    const x = roll_dice(number);
+    if (x === number) {
+      list.push(x);
+      break;
+    } else {
+      list.push(x);
+    }
+  }
+  document.getElementById('target').innerHTML = `<ul>${list.map(x => `<li>${x}</li>`).join('')}</ul>`;
+</script>
+</body>
+</html>

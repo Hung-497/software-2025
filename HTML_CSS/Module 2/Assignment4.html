@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 4</title>
+</head>
+<body>
+<h1>Open console to check</h1>
+<script>
+  const list = [];
+  let x;
+  do {
+    x = parseInt(prompt('Enter the numbers'));
+    if (Number.isNaN(x)) {
+      continue;
+    }
+    if (x !== 0) {
+      list.push(x);
+    }
+  } while (x !== 0);
+  list.sort((a, b) => b - a);
+  console.log(list);
+</script>
+</body>
+</html>
