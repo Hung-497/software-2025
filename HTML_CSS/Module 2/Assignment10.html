@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 10</title>
+</head>
+<body>
+<h1>Meeting</h1>
+<p id="target"></p>
+<script>
+  const target = document.getElementById('target');
+  const ppl = parseInt(prompt('The number of candidates'));
+  const names = [];
+  for (let i = 1; i <= ppl; i++) {
+    const name = prompt(`Name for candidate ${i}`);
+    names.push({name, vote: 0});
+  }
+  const vote = parseInt(prompt('The number of voters'));
+  for (let i = 1; i <= vote; i++) {
+    const name = prompt(`Who will you vote for?`);
+    const candidate = names.find((c) => c.name.toLowerCase() === name);
+    if (candidate) {
+      candidate.vote++;
+    } else {
+      console.log('skip');
+    }
+  }
+  names.sort((a, b) => b.vote - a.vote);
+  const win = names[0];
+  alert(`The winner is ${win.name} with ${win.vote}`);
+  target.innerHTML = `The winner is ${win.name} with ${win.vote} <br>Results:<br>`;
+  names.forEach((candidate) => {target.innerHTML += `${candidate.name}: ${candidate.vote}<br>`});
+</script>
+</body>
+</html>
