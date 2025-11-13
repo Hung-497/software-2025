@@ -93,3 +93,21 @@ const picArray = [
 ];
 
 // add your code here
+const target = document.getElementById('pictures')
+picArray.forEach(pic => {
+  const art = document.createElement('article')
+  art.className = 'card'
+  const h2 = document.createElement('h2')
+  h2.textContent = pic.title
+  const fig = document.createElement('figure')
+  const img = document.createElement('img')
+  img.src = pic.image.medium
+  img.alt = pic.title
+  const cap = document.createElement('figcaption')
+  cap.innerText = pic.caption
+  const pa = document.createElement('p')
+  pa.innerText = pic.description
+  fig.append(img, cap)
+  art.append(h2,fig,pa)
+  target.appendChild(art)
+})

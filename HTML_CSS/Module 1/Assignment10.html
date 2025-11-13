@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 10</title>
+</head>
+
+<body>
+    <h1>Probability of sum of dice</h1>
+    <input type="text" id="dice" placeholder="Enter the number of dices" />
+    <input type="text" id="sumOfFace" placeholder="Enter the sum of the faces" />
+    <button onclick="generate()">Generate</button>
+    <h2 id="probability"></h2>
+    <script>
+        'use strict';
+        function generate() {
+            let count = 0;
+            let numDice = Number(document.getElementById("dice").value);
+            let sum = Number(document.getElementById("sumOfFace").value);
+            for (let i = 1; i <= 10000; i++) {
+                let total = 0;
+                for (let j = 1; j <= numDice; j++) {
+                    const dice_throw = Math.floor(Math.random() * 6) + 1;
+                    total += dice_throw;
+                }
+                if (sum === total) {
+                    count += 1;
+                }
+            }
+            let prob = (count / 10000) * 100;
+            const output = document.getElementById("probability");
+            output.innerText = `Probability to get sum ${sum} with ${numDice} dices is ${prob.toFixed(2)}% `;
+        }
+    </script>
+</body>
+
+</html>
