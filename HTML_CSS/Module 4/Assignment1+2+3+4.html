@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+</head>
+
+<body>
+    <h1>TV Show Search</h1>
+    <p>Enter the name of a TV show to search for information about it:</p>
+    <form action="https://api.tvmaze.com/search/shows">
+        <input id="query" name="q" type="text">
+        <input type="submit" value="Search">
+    </form>
+
+    <div id="results"></div>
+    
+    <script>
+        'use strict';
+        const form = document.querySelector('form');
+        const results = document.getElementById('results');
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const searchterm = document.querySelector('input[name="q"]').value;
+            const url = 'https://api.tvmaze.com/search/shows?q=' + searchterm;
+            try {
+                const response = await fetch(url);
+                if (response.status === 200) {
+                    const result = await response.json()
+                    results.innerHTML = '';
+                    for (let show of result) {
+                        const name = show.show.name;
+                        const link = show.show.url;
+                        let image;
+                        if (show.show.image && show.show.image.medium) {
+                            image = show.show.image.medium
+                        } else {
+                            img = 'https://placehold.co/210x295?text=Not%20Found'
+                        }
+                        const summary = show.show.summary;
+                        results.innerHTML += `<article>
+                                            <h2>${name}</h2><br>
+                                            <a href="${link}" target='_blank'>Click Here For More Information</a><br>
+                                            <img src="${image}" alt="${name}"><br>
+                                            <div> ${summary} </div>
+                                            </article>`;
+                    }
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+    </script>
+</body>
+
+</html>
