@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuck Norris Joke</title>
+</head>
+
+<body>
+    <h1>Chuck Norris Joke</h1>
+    <script>
+        async function joke() {
+            const url = 'https://api.chucknorris.io/jokes/random'
+            try {
+                const response = await fetch(url);
+                if (response.status === 200) {
+                    const result1 = await response.json()
+                    console.log(result1.value)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        joke();
+    </script>
+</body>
+
+</html>
